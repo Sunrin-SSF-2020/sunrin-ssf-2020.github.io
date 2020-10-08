@@ -4,6 +4,7 @@
 		<app-main class="fit"/>
 		<app-about class="fit"/>
 		<app-calendar/>
+		<app-teams/>
 	</div>
 </template>
 
@@ -14,13 +15,15 @@ import AppHeader from "@/components/app/header.vue";
 import AppMain from "@/components/app/main.vue";
 import AppAbout from "@/components/app/about.vue";
 import AppCalendar from "@/components/app/calendar.vue";
+import AppTeams from "@/components/app/teams.vue";
 
 @Component({
 	components: {
 		AppHeader,
 		AppMain,
 		AppAbout,
-		AppCalendar
+		AppCalendar,
+		AppTeams
 	}
 })
 export default class App extends Vue {}
