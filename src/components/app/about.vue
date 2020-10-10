@@ -26,7 +26,7 @@
 			>
 			<div class="content">
 				<span class="tag">24/7 SUPPORT SYSTEM</span>
-				<h1 class="heading">We Telecast our Coffee Making Live</h1>
+				<h2 class="heading">We Telecast our Coffee Making Live</h2>
 				<span class="subheading">We are here to listen from you deliver exellence</span>
 				<p class="paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. magna aliqua. Ut enim ad minim. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. magna aliqua. Ut enim ad minim.</p>
 			</div>

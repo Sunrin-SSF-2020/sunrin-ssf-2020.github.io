@@ -1,10 +1,10 @@
 <template>
 	<div id="app">
 		<app-header/>
-		<app-main class="fit"/>
-		<app-about class="fit"/>
-		<app-calendar/>
-		<app-teams/>
+		<app-main class="fit" />
+		<app-about class="fit" />
+		<app-teams :bus="bus" class="fit-bottom" />
+		<app-calendar :bus="bus" />
 	</div>
 </template>
 
@@ -26,7 +26,9 @@ import AppTeams from "@/components/app/teams.vue";
 		AppTeams
 	}
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+	bus: Vue = new Vue();
+}
 </script>
 
 <style lang="scss">

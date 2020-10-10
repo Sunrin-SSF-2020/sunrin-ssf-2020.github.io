@@ -1,13 +1,13 @@
 <template>
 	<article class="app-calendar" id="calendar">
-		<h2 class="heading">How Our Customers Treat Us</h2>
-		<span class="paragraph">Who are in extremely love with eco friendly system.</span>
+		<h2 class="heading">전체 일정</h2>
+		<span class="paragraph">여기는 어떤걸 적을까요..?</span>
 		<app-calendar-table/>
 	</article>
 </template>
 
 <script lang="ts">
-import { Vue, Component } from "vue-property-decorator";
+import { Vue, Component, Prop } from "vue-property-decorator";
 // Components //
 import AppCalendarTable from "@/components/app/calendar/table.vue";
 
@@ -16,7 +16,12 @@ import AppCalendarTable from "@/components/app/calendar/table.vue";
 		AppCalendarTable
 	}
 })
-export default class AppCalendar extends Vue {}
+export default class AppCalendar extends Vue {
+	@Prop({
+		type: Vue,
+		required: true
+	}) bus!: Vue;
+}
 </script>
 
 <style lang="scss" scoped>
@@ -28,7 +33,7 @@ export default class AppCalendar extends Vue {}
 	}
 	.paragraph {
 		display: block;
-		margin-bottom: 64px;
+		margin-bottom: 32px;
 		text-align: center;
 	}
 }

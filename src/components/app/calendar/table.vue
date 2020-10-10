@@ -2,11 +2,9 @@
 	<table class="app-calendar-table">
 		<thead>
 			<tr>
-				<th>sl</th>
-				<th>session</th>
-				<th>speaker</th>
-				<th>vanue</th>
-				<th>time</th>
+				<th>날짜</th>
+				<th>일정</th>
+				<th>세부사항</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -31,13 +29,10 @@ import { Vue, Component } from "vue-property-decorator";
 @Component
 export default class AppCalendarTable extends Vue {
 	tableBody: string[][] = [
-		["01", "Reception & Taling Seats"     , "Isabelle Cooper"  , "3rd Hall Room", "02.00"],
-		["02", "Breakfast and rest"           , "N/A"              , "4th Hall Room", "02.00"],
-		["03", "Reception & Taling Seats"     , "Jane Daniel"      , "2nd Hall Room", "02.00"],
-		["04", "Next generation speech"       , "Billy Barton"     , "1st Hall Room", "02.00"],
-		["05", "Sppech for young people"      , "Flora Gonzales"   , "4th Hall Room", "02.00"],
-		["06", "Lunch Break"                  , "N/A"              , "3rd Hall Room", "02.00"],
-		["07", "Sppech for Middle aged people", "Francisco Barrett", "1st Hall Room", "02.00"]
+		["10/22", "캠프 접수 시작"     , "-"],
+		["10/26", "캠프 접수 마감"     , "참가자 선정 및 안내문 발송"  ],
+		["10/27", "참가자 확인"           , "참가자 연락 및 참가 확인"],
+		["10/31", "캠프 당일"     , "캠프 별 수업 진행"]
 	];
 }
 </script>
@@ -74,7 +69,7 @@ export default class AppCalendarTable extends Vue {
 	}
 	tbody {
 		tr {
-			transition: background-color 0.1s, color 0.1s;
+			transition: background-color 0.05s, color 0.05s;
 
 			&:hover {
 				background-color: $theme-color;

@@ -53,6 +53,8 @@ export default class AppAboutPanel extends Vue {
 		padding: 48px 64px;
 	}
 	.image {
+		position: relative;
+
 		width: var(--image-size, 50%);
 		object-fit: cover;
 	}

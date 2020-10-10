@@ -1,11 +1,8 @@
 <template>
 	<div class="app-teams-team-block" :style="appTeamsTeamBlockStyle">
 		<div class="content">
-			<span class="title">
+			<span hidden class="title">
 				<slot name="title"/>
-			</span>
-			<span class="desc">
-				<slot name="desc"/>
 			</span>
 		</div>
 	</div>
@@ -61,14 +58,6 @@ export default class AppTeamsTeamBlock extends Vue {
 
 		transition: bottom 0.25s;
 
-		.title {
-			display: block;
-
-			padding: 12px 0;
-
-			font-size: 24px;
-			text-align: center;
-		}
 		.desc {
 			display: block;
 			position: absolute;

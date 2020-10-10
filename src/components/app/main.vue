@@ -9,7 +9,7 @@
 		<!-- Info -->
 		<span class="info calendar">
 			<app-icon icon="mdi-calendar"/>
-			2018년 08월 31일 ~ 09월 01일
+			2020년 08월 31일
 		</span>
 		<span class="info address">
 			<app-icon icon="mdi-map-outline"/>
@@ -30,7 +30,7 @@ import AppIcon from "@/components/app/icon.vue";
 })
 export default class AppMain extends Vue {
 	now: Date | null = null;
-	end: Date = new Date("2020-10-18");
+	end: Date = new Date("2020-10-26");
 
 	created() {
 		fetch("http://worldtimeapi.org/api/timezone/Asia/Seoul").then((response) => {
@@ -71,14 +71,15 @@ export default class AppMain extends Vue {
 	align-items: center;
 
 	background: {
-		image: url("../../assets/banner-main.jpg");
-		color: rgba(4, 9, 30, 0.85);
+		image: linear-gradient(to right, #5295ea 0%, #8b79db 100%);
+		color: linear-gradient(to right, #5295ea 0%, #8b79db 100%);
 
-		blend-mode: overlay;
+		blend-mode: color;
 
 		position: center;
 		size: cover;
 	}
+	background-blend-mode: normal;
 
 	color: #ffffff;
 
