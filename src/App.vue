@@ -3,8 +3,9 @@
 		<app-header/>
 		<app-main class="fit" />
 		<app-about class="fit" />
-		<app-teams :bus="bus" class="fit-bottom" />
-		<app-calendar :bus="bus" />
+		<app-calendar/>
+		<app-teams class="fit-top" />
+		<app-footer/>
 	</div>
 </template>
 
@@ -14,16 +15,18 @@ import { Vue, Component } from "vue-property-decorator";
 import AppHeader from "@/components/app/header.vue";
 import AppMain from "@/components/app/main.vue";
 import AppAbout from "@/components/app/about.vue";
-import AppCalendar from "@/components/app/calendar.vue";
 import AppTeams from "@/components/app/teams.vue";
+import AppCalendar from "@/components/app/calendar.vue";
+import AppFooter from "@/components/app/footer.vue";
 
 @Component({
 	components: {
 		AppHeader,
 		AppMain,
 		AppAbout,
+		AppTeams,
 		AppCalendar,
-		AppTeams
+		AppFooter
 	}
 })
 export default class App extends Vue {
@@ -34,9 +37,6 @@ export default class App extends Vue {
 <style lang="scss">
 @import "./assets/variables";
 
-html {
-	scroll-behavior: smooth;
-}
 body {
 	margin: 0;
 
@@ -48,6 +48,8 @@ body {
 	padding: 0;
 
 	box-sizing: border-box;
+
+	scroll-behavior: smooth;
 
 	color: inherit;
 	text-decoration: none;

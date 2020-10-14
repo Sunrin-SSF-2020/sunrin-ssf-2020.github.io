@@ -63,7 +63,7 @@ export default class AppMain extends Vue {
 
 .app-main {
 	display: flex;
-	height: 640px;
+	height: 100vh;
 
 	flex-direction: column;
 
@@ -71,15 +71,14 @@ export default class AppMain extends Vue {
 	align-items: center;
 
 	background: {
-		image: linear-gradient(to right, #5295ea 0%, #8b79db 100%);
-		color: linear-gradient(to right, #5295ea 0%, #8b79db 100%);
+		image: url("../../assets/banner-main.jpg");
+		color: rgba(4, 9, 30, 0.85);
 
-		blend-mode: color;
+		blend-mode: overlay;
 
 		position: center;
 		size: cover;
 	}
-	background-blend-mode: normal;
 
 	color: #ffffff;
 

@@ -16,12 +16,7 @@ import AppCalendarTable from "@/components/app/calendar/table.vue";
 		AppCalendarTable
 	}
 })
-export default class AppCalendar extends Vue {
-	@Prop({
-		type: Vue,
-		required: true
-	}) bus!: Vue;
-}
+export default class AppCalendar extends Vue {}
 </script>
 
 <style lang="scss" scoped>

@@ -1,10 +1,15 @@
 <template>
-	<div class="app-teams-team-block" :style="appTeamsTeamBlockStyle">
-		<div class="content">
-			<span hidden class="title">
-				<slot name="title"/>
-			</span>
-		</div>
+	<div class="app-teams-team-block">
+		<div
+			v-text="title"
+			class="front"
+			:style="frontStyle"
+		/>
+		<div
+			v-text="description"
+			class="back"
+			:style="backStyle"
+		/>
 	</div>
 </template>
 
@@ -18,14 +23,43 @@ export default class AppTeamsTeamBlock extends Vue {
 	@Prop({
 		type: String,
 		required: true
-	}) thumbnail!: string;
+	}) img!: string;
+	@Prop({
+		type: String,
+		required: true
+	}) title!: string;
+	@Prop({
+		type: String,
+		required: true
+	}) name!: string;
+	@Prop({
+		type: String,
+		required: true
+	}) description!: string;
+	@Prop({
+		type: Array,
+		required: true
+	}) materials!: string[];
+	@Prop({
+		type: Array,
+		required: true
+	}) classes!: string[];
 
 	get thumbnailUrl() {
-		return require(`@/assets/${this.thumbnail}`);
+		return require(`@/assets/teams/front/${this.img}.png`);
 	}
-	get appTeamsTeamBlockStyle() {
+	get backUrl() {
+		return require(`@/assets/teams/back/${this.img}.png`);
+	}
+
+	get frontStyle() {
 		return {
 			"background-image": `url(${this.thumbnailUrl})`
+		};
+	}
+	get backStyle() {
+		return {
+			"background-image": `url(${this.backUrl})`
 		};
 	}
 }
@@ -39,36 +73,32 @@ export default class AppTeamsTeamBlock extends Vue {
 
 	padding-top: 100%;
 
-	background: {
-		position: center;
-		size: cover;
-	}
-
 	overflow: hidden;
 
-	.content {
+	cursor: pointer;
+
+	> * {
 		position: absolute;
-		bottom: 0;
+		top: 0;
+		left: 0;
 
 		width: 100%;
+		height: 100%;
 
-		background-color: rgba(#000000, 0.75);
+		background-size: cover;
 
-		color: $text-color-white;
-
-		transition: bottom 0.25s;
-
-		.desc {
-			display: block;
-			position: absolute;
-
-			max-width: 100%;
-			padding: 0 24px;
-		}
+		font-size: 0;
 	}
 
-	&:hover .content {
-		top: 0;
+	.back {
+		top: 100%;
+		transition: top 0.35s ease-in-out;
+	}
+
+	&:hover {
+		.back {
+			top: 0;
+		}
 	}
 }
 </style>
