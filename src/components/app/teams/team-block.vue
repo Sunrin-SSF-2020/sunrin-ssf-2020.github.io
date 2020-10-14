@@ -20,29 +20,31 @@
 				<div class="img" :style="backStyle" />
 				<div class="contents">
 					<span class="title">{{ title }}</span>
-					<div class="section materials">
-						<span class="heading">준비물</span>
-						<ul class="list">
-							<li
-								v-for="text in materials"
-								:key="text"
-								v-text="text"
-								class="item"
-							/>
-						</ul>
-					</div>
-					<div class="section classes">
-						<span class="heading">수업 일정</span>
-						<ol class="list">
-							<li
-								v-for="(cls, index) in classes"
-								:key="`${index}_${cls}`"
-								class="item"
-							>
-								<span class="list-index">{{ index + 1 }} 차시</span>
-								{{ cls }}
-							</li>
-						</ol>
+					<div class="flex">
+						<div class="section materials">
+							<span class="heading">준비물</span>
+							<ul class="list">
+								<li
+									v-for="text in materials"
+									:key="text"
+									v-text="text"
+									class="item"
+								/>
+							</ul>
+						</div>
+						<div class="section classes">
+							<span class="heading">수업 일정</span>
+							<ol class="list">
+								<li
+									v-for="(cls, index) in classes"
+									:key="`${index}_${cls}`"
+									class="item"
+								>
+									<span class="list-index">{{ index + 1 }} 차시</span>
+									{{ cls }}
+								</li>
+							</ol>
+						</div>
 					</div>
 				</div>
 				<button
@@ -203,7 +205,6 @@ export default class AppTeamsTeamBlock extends Vue {
 
 	.content {
 		display: flex;
-		align-items: center;
 		gap: 64px;
 		padding: 32px;
 
@@ -222,18 +223,26 @@ export default class AppTeamsTeamBlock extends Vue {
 		}
 
 		.contents {
-			display: flex;
-			flex-wrap: wrap;
-			gap: 32px;
-
 			z-index: 1;
+
+			width: 100%;
+
+			.flex {
+				display: flex;
+				flex-wrap: wrap;
+				align-items: flex-start;
+				gap: 32px;
+			}
 
 			.title {
 				display: block;
+
 				width: 100%;
+				margin-bottom: 32px;
+				padding-right: 64px;
 
 				color: #182860;
-				font-size: 24px;
+				font-size: 28px;
 				font-weight: 600;
 			}
 			.heading {
@@ -291,6 +300,7 @@ export default class AppTeamsTeamBlock extends Vue {
 			display: flex;
 
 			position: absolute;
+			z-index: 8;
 			top: 32px;
 			right: 32px;
 
