@@ -16,19 +16,41 @@
 			/>
 		</div>
 		<div :class="popupClasses">
-			<div class="img" :style="backStyle" />
-			<div class="contents">
-				<div class="section materials">
-					<span class="heading">준비물</span>
-					<ul class="list">
-						<li
-							v-for="text in materials"
-							:key="text"
-							v-text="text"
-							class="item"
-						/>
-					</ul>
+			<div class="content">
+				<div class="img" :style="backStyle" />
+				<div class="contents">
+					<span class="title">{{ title }}</span>
+					<div class="section materials">
+						<span class="heading">준비물</span>
+						<ul class="list">
+							<li
+								v-for="text in materials"
+								:key="text"
+								v-text="text"
+								class="item"
+							/>
+						</ul>
+					</div>
+					<div class="section classes">
+						<span class="heading">수업 일정</span>
+						<ol class="list">
+							<li
+								v-for="(cls, index) in classes"
+								:key="`${index}_${cls}`"
+								class="item"
+							>
+								<span class="list-index">{{ index + 1 }} 차시</span>
+								{{ cls }}
+							</li>
+						</ol>
+					</div>
 				</div>
+				<button
+					class="close"
+					@click.prevent.stop="changeShowPopup(false)"
+				>
+					<app-icon icon="mdi-close" />
+				</button>
 			</div>
 		</div>
 	</div>
@@ -36,9 +58,13 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
+// Components //
+import AppIcon from "@/components/app/icon.vue";
 
 @Component({
-	components: {}
+	components: {
+		AppIcon
+	}
 })
 export default class AppTeamsTeamBlock extends Vue {
 	@Prop({
@@ -149,8 +175,8 @@ export default class AppTeamsTeamBlock extends Vue {
 
 .popup {
 	display: flex;
-	align-items: center;
-	gap: 32px;
+	flex-direction: column;
+	justify-content: center;
 
 	position: fixed;
 	z-index: 1024;
@@ -161,63 +187,123 @@ export default class AppTeamsTeamBlock extends Vue {
 
 	width: 100%;
 	height: 100%;
-	padding: 32px;
 
 	background-color: rgba(#000000, 0.75);
-
-	color: $text-color-white;
+	background-repeat: no-repeat;
 
 	transition: opacity 0.1s;
 
 	pointer-events: none;
-
-	.img {
-		width: 512px;
-		height: 512px;
-
-		background-size: contain;
-	}
-	.contents {
-		.heading {
-			display: block;
-			position: relative;
-
-			width: fit-content;
-			margin-bottom: 4px;
-			padding: {
-				left: 4px;
-				right: 16px;
-			};
-
-			// color: #182860;
-			font-size: 24px;
-			font-weight: 600;
-
-			&::after {
-				content: "";
-
-				display: block;
-
-				position: absolute;
-				z-index: -1;
-				bottom: 0;
-				left: 0;
-
-				width: 100%;
-				height: 30%;
-
-				background-color: #ffe02c;
-			}
-		}
-		.list {
-			margin-left: 24px;
-		}
-	}
-
+	
 	&.show {
 		opacity: 1;
 
 		pointer-events: all;
+	}
+
+	.content {
+		display: flex;
+		align-items: center;
+		gap: 64px;
+		padding: 32px;
+
+		position: relative;
+
+		background-color: #ffffff;
+
+		.img {
+			flex-shrink: 0;
+
+			width: 512px;
+			height: 512px;
+
+			background-size: contain;
+			background-repeat: no-repeat;
+		}
+
+		.contents {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 32px;
+
+			z-index: 1;
+
+			.title {
+				display: block;
+				width: 100%;
+
+				color: #182860;
+				font-size: 24px;
+				font-weight: 600;
+			}
+			.heading {
+				display: block;
+				position: relative;
+
+				width: fit-content;
+				margin-bottom: 8px;
+				padding: {
+					left: 4px;
+					right: 16px;
+				};
+
+				color: #182860;
+				font-size: 24px;
+				font-weight: 600;
+
+				&::after {
+					content: "";
+
+					display: block;
+
+					position: absolute;
+					z-index: -1;
+					bottom: 0;
+					left: 0;
+
+					width: 100%;
+					height: 30%;
+
+					background-color: #ffe02c;
+				}
+			}
+			.list {
+				margin-left: 24px;
+
+				.item {
+					margin-bottom: 2px;
+				}
+			}
+		}
+		.classes {
+			.list {
+				margin-left: 8px;
+				list-style: none;
+
+				.list-index {
+					color: #182860;
+					font-weight: 600;
+				}
+			}
+		}
+
+		.close {
+			display: flex;
+
+			position: absolute;
+			top: 32px;
+			right: 32px;
+
+			width: 32px;
+			height: 32px;
+
+			border: none;
+			background: none;
+
+			font-size: 32px;
+
+			cursor: pointer;
+		}
 	}
 }
 </style>
