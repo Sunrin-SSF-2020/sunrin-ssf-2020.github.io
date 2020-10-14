@@ -40,7 +40,8 @@ export default class AppFooter extends Vue {}
 			font-size: 32px;
 		}
 
-		&:hover {
+		&:hover,
+		&:focus {
 			color: $theme-color;
 		}
 	}

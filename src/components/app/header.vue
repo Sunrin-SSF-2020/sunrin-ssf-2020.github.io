@@ -104,7 +104,8 @@ export default class AppHeader extends Vue {
 
 		transition: background-color 0.1s, color 0.1s;
 
-		&:hover {
+		&:hover,
+		&:focus {
 			background-color: $theme-color;
 			color: inherit;
 		}

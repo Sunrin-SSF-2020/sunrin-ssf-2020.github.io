@@ -2,8 +2,15 @@
 	<div
 		class="app-teams-team-block"
 		@click="changeShowPopup(true)"
+		@keydown.enter.prevent="onEnter"
+		@keydown.esc.prevent="onEsc"
 	>
-		<div :class="cardClasses">
+		<div
+			tabindex="0"
+			:class="cardClasses"
+			@focus="onFocus"
+			@blur="onBlur"
+		>
 			<div
 				v-text="title"
 				class="front"
@@ -17,7 +24,7 @@
 		</div>
 		<div :class="popupClasses">
 			<div class="content">
-				<div class="img" :style="backStyle" />
+				<div class="img" :style="backStyle">{{ description }}</div>
 				<div class="contents">
 					<span class="title">{{ title }}</span>
 					<div class="flex">
@@ -33,7 +40,7 @@
 							</ul>
 						</div>
 						<div class="section classes">
-							<span class="heading">수업 일정</span>
+							<span class="heading">수업계획</span>
 							<ol class="list">
 								<li
 									v-for="(cls, index) in classes"
@@ -50,6 +57,8 @@
 				<button
 					class="close"
 					@click.prevent.stop="changeShowPopup(false)"
+					@focus="onFocusClose"
+					@blur="onBlurClose"
 				>
 					<app-icon icon="mdi-close" />
 				</button>
@@ -94,11 +103,34 @@ export default class AppTeamsTeamBlock extends Vue {
 		required: true
 	}) classes!: string[];
 
+	isFocus: boolean = false;
+	isFocusClose: boolean = false;
 	showPopup: boolean = false;
 
 	changeShowPopup(show: boolean) {
 		this.showPopup = show;
-		document.body.style.overflow = show ? "hidden" : "hidden auto";
+		document.body.style.overflowY = show ? "hidden" : "auto";
+	}
+
+	onFocus() {
+		this.isFocus = true;
+	}
+	onBlur() {
+		this.isFocus = false;
+	}
+	onFocusClose() {
+		this.isFocusClose = true;
+	}
+	onBlurClose() {
+		this.isFocusClose = false;
+	}
+
+	onEnter() {
+		if (this.isFocusClose) this.changeShowPopup(false);
+		else if (this.isFocus) this.changeShowPopup(true);
+	}
+	onEsc() {
+		if (this.showPopup) this.changeShowPopup(false);
 	}
 
 	get thumbnailUrl() {
@@ -168,6 +200,7 @@ export default class AppTeamsTeamBlock extends Vue {
 	}
 
 	&:hover,
+	&:focus,
 	&.selected {
 		.back {
 			top: 0;
@@ -193,20 +226,17 @@ export default class AppTeamsTeamBlock extends Vue {
 	background-color: rgba(#000000, 0.75);
 	background-repeat: no-repeat;
 
-	transition: opacity 0.1s;
+	transition: opacity 0.2s;
 
 	pointer-events: none;
-	
-	&.show {
-		opacity: 1;
-
-		pointer-events: all;
-	}
 
 	.content {
 		display: flex;
 		gap: 64px;
 		padding: 32px;
+
+		height: 100%;
+		max-height: 512px + 64px;
 
 		position: relative;
 
@@ -216,10 +246,12 @@ export default class AppTeamsTeamBlock extends Vue {
 			flex-shrink: 0;
 
 			width: 512px;
-			height: 512px;
+			height: 100%;
 
 			background-size: contain;
 			background-repeat: no-repeat;
+
+			font-size: 0;
 		}
 
 		.contents {
@@ -297,7 +329,7 @@ export default class AppTeamsTeamBlock extends Vue {
 		}
 
 		.close {
-			display: flex;
+			display: none;
 
 			position: absolute;
 			z-index: 8;
@@ -313,6 +345,15 @@ export default class AppTeamsTeamBlock extends Vue {
 			font-size: 32px;
 
 			cursor: pointer;
+		}
+	}
+
+	&.show {
+		opacity: 1;
+		pointer-events: all;
+
+		.close {
+			display: flex;
 		}
 	}
 }
