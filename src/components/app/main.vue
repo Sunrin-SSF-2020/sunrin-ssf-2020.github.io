@@ -92,6 +92,7 @@ export default class AppMain extends Vue {
 			bottom: 48px;
 		}
 
+		font-family: "GoyangDeogyang", sans-serif;
 		font-size: 64px;
 	}
 	.timer {

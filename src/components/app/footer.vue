@@ -1,7 +1,11 @@
 <template>
 	<article class="app-footer" id="footer">
 		<div class="links">
-			<a href="#" class="link">
+			<a
+				href="https://www.facebook.com/SSFKorea/"
+				target="_blank"
+				class="link"
+			>
 				<app-icon icon="mdi-facebook" />
 			</a>
 		</div>

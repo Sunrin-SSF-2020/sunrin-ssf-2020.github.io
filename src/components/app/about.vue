@@ -1,29 +1,27 @@
 <template>
 	<article class="app-about" id="about">
 		<app-about-panel
+			image="about-1.jpg"
 			background="#f9f9ff"
 		>
 			<div class="content">
 				<h1 class="heading">2020 소프트웨어 나눔축제</h1>
-				<span class="subheading">We are here to listen from you deliver exellence</span>
-				<p class="paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. magna aliqua. Ut enim ad minim. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. magna aliqua. Ut enim ad minim.</p>
+				<span class="subheading">소프트웨어의 미래를 만나보세요</span>
+				<p class="paragraph">
+					여기다가 설명을 적을겁니다<br>
+					뭐라고 적을지는 모르겠어요 :(<br>
+					줄 수를 채워야 해서 일단 적어둡니다 :D<br>
+					하지만 이제 적을게 없네요ㅠㅜ
+				</p>
 			</div>
-			<img
-				src="@/assets/about-1.jpg"
-				alt="개요 사진 1"
-				class="image"
-			>
 		</app-about-panel>
 		<app-about-panel
 			text="white"
 			background="#222222"
+			image="about-2.jpg"
 			:imagesize="0.6"
+			imagepos="left"
 		>
-			<img
-				src="@/assets/about-2.jpg"
-				alt="개요 사진 2"
-				class="image"
-			>
 			<div class="content">
 				<span class="tag">24/7 SUPPORT SYSTEM</span>
 				<h2 class="heading">We Telecast our Coffee Making Live</h2>

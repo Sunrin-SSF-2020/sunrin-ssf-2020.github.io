@@ -13,7 +13,13 @@
 				:materials="team.materials"
 				:classes="team.classes"
 			/>
-			<div class="apply">신청하기</div>
+			<a
+				href="#"
+				target="_blank"
+				class="apply"
+			>
+				<span class="text">신청하기</span>
+			</a>
 		</div>
 	</article>
 </template>
@@ -21,10 +27,12 @@
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
 // Components //
+import AppIcon from "@/components/app/icon.vue";
 import AppTeamsTeamBlock from "@/components/app/teams/team-block.vue";
 
 @Component({
 	components: {
+		AppIcon,
 		AppTeamsTeamBlock
 	}
 })
@@ -147,6 +155,46 @@ export default class AppTeams extends Vue {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	gap: 16px;
+}
+
+.apply {
+	display: flex;
+	position: relative;
+	flex-direction: column;
+	justify-content: center;
+
+	border: 32px solid #1c1c33;
+
+	.text {
+		display: block;
+		position: relative;
+		z-index: 1;
+
+		width: fit-content;
+		margin-bottom: 8px;
+		padding: 0 4px;
+		margin: 0 auto;
+
+		color: #1c1c33;
+		font-size: 24px;
+		font-weight: 600;
+
+		&::after {
+			content: "";
+
+			display: block;
+
+			position: absolute;
+			z-index: -1;
+			bottom: 0;
+			left: 0;
+
+			width: 100%;
+			height: 30%;
+
+			background-color: #ffe02c;
+		}
+	}
 }
 
 @media screen and (max-width: 1024px) {

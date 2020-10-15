@@ -29,10 +29,10 @@ import { Vue, Component } from "vue-property-decorator";
 @Component
 export default class AppCalendarTable extends Vue {
 	tableBody: string[][] = [
-		["10/22", "캠프 접수 시작"     , "-"],
-		["10/26", "캠프 접수 마감"     , "참가자 선정 및 안내문 발송"  ],
-		["10/27", "참가자 확인"           , "참가자 연락 및 참가 확인"],
-		["10/31", "캠프 당일"     , "캠프 별 수업 진행"]
+		["10/21", "캠프 접수 시작"     , "-"],
+		["10/25", "캠프 접수 마감"     , "참가자 선정 및 안내문 발송"],
+		["10/27", "참가자 발표 및 확인", "참가자 연락 및 참가 확인"],
+		["10/31", "캠프 진행"          , "캠프 별 수업 진행"]
 	];
 }
 </script>
@@ -76,6 +76,12 @@ export default class AppCalendarTable extends Vue {
 				color: $text-color-white;
 			}
 		}
+	}
+}
+
+@media screen and (max-width: 550px) {
+	.app-calendar-table {
+		width: 100%;
 	}
 }
 </style>

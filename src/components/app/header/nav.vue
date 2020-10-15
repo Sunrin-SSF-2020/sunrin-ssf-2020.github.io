@@ -2,8 +2,8 @@
 	<nav class="app-header-nav">
 		<a href="#main" class="nav-link">홈</a>
 		<a href="#about" class="nav-link">개요</a>
-		<a href="#teams" class="nav-link">캠프</a>
 		<a href="#calendar" class="nav-link">일정</a>
+		<a href="#teams" class="nav-link">캠프</a>
 	</nav>
 </template>
 
