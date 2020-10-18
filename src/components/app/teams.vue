@@ -176,8 +176,11 @@ export default class AppTeams extends Vue {
 		margin: 0 auto;
 
 		color: #1c1c33;
-		font-size: 24px;
-		font-weight: 600;
+		font: {
+			family: "GoyangDeogyang", sans-serif;
+			size: 24px;
+			weight: 600;
+		}
 
 		&::after {
 			content: "";

@@ -274,8 +274,11 @@ export default class AppTeamsTeamBlock extends Vue {
 				padding-right: 64px;
 
 				color: #182860;
-				font-size: 28px;
-				font-weight: 600;
+				font: {
+					family: "GoyangDeogyang", sans-serif;
+					size: 28px;
+					weight: 600;
+				}
 			}
 			.heading {
 				display: block;
@@ -289,8 +292,11 @@ export default class AppTeamsTeamBlock extends Vue {
 				};
 
 				color: #182860;
-				font-size: 24px;
-				font-weight: 600;
+				font: {
+					family: "GoyangDeogyang", sans-serif;
+					size: 24px;
+					weight: 600;
+				}
 
 				&::after {
 					content: "";
@@ -322,8 +328,14 @@ export default class AppTeamsTeamBlock extends Vue {
 				list-style: none;
 
 				.list-index {
+					display: inline-block;
+					width: 48px;
+
 					color: #182860;
-					font-weight: 600;
+					font: {
+						family: "GoyangDeogyang", sans-serif;
+						weight: 600;
+					}
 				}
 			}
 		}

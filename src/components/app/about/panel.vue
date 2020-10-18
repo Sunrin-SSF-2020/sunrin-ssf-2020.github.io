@@ -101,6 +101,13 @@ export default class AppAboutPanel extends Vue {
 @media screen and (max-width: 768px) {
 	.app-about-panel {
 		flex-direction: column;
+
+		.content {
+			width: 100%;
+		}
+		.image {
+			display: none;
+		}
 	}
 }
 </style>

@@ -113,14 +113,22 @@ article {
 	}
 
 	.heading {
-		margin-bottom: 16px;
-		font-family: "GoyangDeogyang", sans-serif;
-		font-size: 32px;
+		font: {
+			family: "GoyangDeogyang", sans-serif;
+			size: 32px;
+		}
 	}
 	.subheading {
 		display: block;
-		margin-bottom: 16px;
-		font-weight: 600;
+		margin: {
+			top: 24px;
+			bottom: 12px;
+		};
+
+		font: {
+			family: "GoyangDeogyang", sans-serif;
+			weight: 600;
+		}
 	}
 	.paragraph {
 		color: $text-color-desc;

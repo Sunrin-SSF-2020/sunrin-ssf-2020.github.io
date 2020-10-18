@@ -47,7 +47,6 @@ export default class AppCalendarTable extends Vue {
 
 	color: $text-color-desc;
 	font-size: 14px;
-	font-weight: 500;
 	text-align: center;
 
 	th, td {
@@ -64,7 +63,10 @@ export default class AppCalendarTable extends Vue {
 			background-color: #e9ecef;
 
 			color: $text-color-title;
-			font-weight: 600;
+			font: {
+				family: "GoyangDeogyang", sans-serif;
+				weight: 600;
+			}
 		}
 	}
 	tbody {

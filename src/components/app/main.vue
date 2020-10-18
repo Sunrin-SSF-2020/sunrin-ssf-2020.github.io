@@ -30,7 +30,7 @@ import AppIcon from "@/components/app/icon.vue";
 })
 export default class AppMain extends Vue {
 	now: Date | null = null;
-	end: Date = new Date("2020-10-26");
+	end: Date = new Date("2020-10-25");
 
 	created() {
 		fetch("http://worldtimeapi.org/api/timezone/Asia/Seoul").then((response) => {
@@ -99,6 +99,7 @@ export default class AppMain extends Vue {
 		margin-bottom: 32px;
 
 		font: {
+			family: "GoyangDeogyang", sans-serif;
 			size: 22px;
 			weight: 600;
 		}
@@ -120,6 +121,59 @@ export default class AppMain extends Vue {
 		.app-icon {
 			color: $theme-color;
 			font-size: 24px;
+		}
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.app-main {
+		.slogan {
+			font-size: 18px;
+		}
+		.title {
+			font-size: 48px;
+		}
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.app-main {
+		.slogan {
+			font-size: 16px;
+		}
+		.title {
+			font-size: 32px;
+		}
+		.info {
+			margin: 0 16px;
+			align-items: flex-start;
+			align-self: flex-start;
+
+			.app-icon {
+				flex-shrink: 0;
+			}
+
+			&:not(:first-child) {
+				margin-top: 16px;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 425px) {
+	.app-main {
+		.slogan {
+			margin: 0 16px;
+			align-self: flex-start;
+		}
+		.title {
+			margin: {
+				top: 8px;
+				bottom: 48px;
+				left: 16px;
+				right: 16px;
+			};
+			align-self: flex-start;
 		}
 	}
 }
