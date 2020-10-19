@@ -55,6 +55,7 @@
 					</div>
 				</div>
 				<button
+					:tabindex="showPopup ? 0 : -1"
 					class="close"
 					@click.prevent.stop="changeShowPopup(false)"
 					@focus="onFocusClose"

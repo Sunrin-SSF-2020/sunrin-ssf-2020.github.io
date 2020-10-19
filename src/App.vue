@@ -29,41 +29,7 @@ import AppFooter from "@/components/app/footer.vue";
 		AppFooter
 	}
 })
-export default class App extends Vue {
-	now: Date | null = null;
-	calendar: {
-		date: Date;
-		name: string;
-	}[] = [
-		{
-			date: new Date("2020-10-21T00:00:00"),
-			name: "접수시작"
-		},
-		{
-			date: new Date("2020-10-25T17:00:00"),
-			name: "접수마감"
-		},
-		{
-			date: new Date("2020-10-27T18:00:00"),
-			name: "참가자 발표"
-		},
-		{
-			date: new Date("2020-10-31T18:00:00"),
-			name: "수업 중"
-		}
-	];
-
-	created() {
-		fetch("http://worldtimeapi.org/api/timezone/Asia/Seoul").then((response) => {
-			if (response.ok) {
-				return response.json();
-			}
-			throw new Error("World time api error!");
-		}).then((json) => {
-			this.now = new Date(json.datetime);
-		});
-	}
-}
+export default class App extends Vue {}
 </script>
 
 <style lang="scss">

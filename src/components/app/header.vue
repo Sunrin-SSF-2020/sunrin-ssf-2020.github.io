@@ -111,4 +111,22 @@ export default class AppHeader extends Vue {
 		}
 	}
 }
+
+@media screen and (max-width: 550px) {
+	.app-header {
+		padding: {
+			top: 8px;
+			bottom: 8px;
+			left: 16px;
+			right: 56px;
+		};
+		
+		.app-header-nav {
+			padding: 0;
+		}
+	}
+	.apply {
+		margin-left: auto;
+	}
+}
 </style>
