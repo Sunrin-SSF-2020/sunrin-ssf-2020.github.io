@@ -58,7 +58,7 @@ export default class App extends Vue {
 		}
 	];
 
-	applyUrl: string = "";
+	applyUrl: string = "https://forms.gle/kaGYa7r3pqD4HyzD9";
 
 	created() {
 		let httpRequest = new XMLHttpRequest();
