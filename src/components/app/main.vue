@@ -51,7 +51,7 @@ export default class AppMain extends Vue {
 
 		let sch = this.schedule[this.currentSchedule];
 		let gap = sch.date.getTime() - this.now.getTime();
-		gap = Math.round(gap / (1000 * 60 * 60 * 24));
+		gap = Math.ceil(gap / (1000 * 60 * 60 * 24));
 		let result = [sch.name, ""];
 		if (
 			this.now.getFullYear() == sch.date.getFullYear() &&
