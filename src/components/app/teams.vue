@@ -14,7 +14,8 @@
 				:classes="team.classes"
 			/>
 			<a
-				href="#"
+				v-if="apply"
+				:href="form"
 				target="_blank"
 				class="apply"
 			>
@@ -37,6 +38,15 @@ import AppTeamsTeamBlock from "@/components/app/teams/team-block.vue";
 	}
 })
 export default class AppTeams extends Vue {
+	@Prop({
+		type: Boolean,
+		default: false
+	}) apply!: boolean;
+	@Prop({
+		type: String,
+		default: ""
+	}) form!: string;
+
 	teamList: {
 		[key: string]: {
 			title: string;
@@ -208,6 +218,18 @@ export default class AppTeams extends Vue {
 @media screen and (max-width: 720px) {
 	.team-list {
 		grid-template-columns: repeat(2, 1fr);
+	}
+}
+@media screen and (max-width: 450px) {
+	.team-list {
+		gap: 8px;
+	}
+	.apply {
+		border-width: 24px;
+
+		.text {
+			font-size: 16px;
+		}
 	}
 }
 </style>

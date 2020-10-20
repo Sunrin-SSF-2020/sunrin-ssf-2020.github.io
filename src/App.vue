@@ -1,10 +1,18 @@
 <template>
 	<div id="app">
-		<app-header/>
-		<app-main class="fit" />
+		<app-header :apply="showApply" :form="applyUrl" />
+		<app-main
+			:now="now"
+			:schedule="schedule"
+			class="fit"
+		/>
 		<app-about class="fit" />
 		<app-calendar/>
-		<app-teams class="fit-top" />
+		<app-teams
+			:apply="showApply"
+			:form="applyUrl"
+			class="fit-top"
+		/>
 		<app-footer/>
 	</div>
 </template>
@@ -29,7 +37,54 @@ import AppFooter from "@/components/app/footer.vue";
 		AppFooter
 	}
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+	now: Date | null = null;
+	schedule: { date: Date; name: string; }[] = [
+		{
+			date: new Date("2020-10-21T09:00:00"),
+			name: "접수시작"
+		},
+		{
+			date: new Date("2020-10-25T17:00:00"),
+			name: "접수마감"
+		},
+		{
+			date: new Date("2020-10-27T18:00:00"),
+			name: "참가자 발표"
+		},
+		{
+			date: new Date("2020-10-31T18:00:00"),
+			name: "캠프 진행"
+		}
+	];
+
+	applyUrl: string = "";
+
+	created() {
+		let httpRequest = new XMLHttpRequest();
+		httpRequest.open("GET", "http://worldtimeapi.org/api/timezone/Asia/Seoul", true);
+		httpRequest.responseType = "json";
+		httpRequest.onload = () => {
+			let status = httpRequest.status;
+			if (status === 200) {
+				this.now = new Date(httpRequest.response["datetime"]);
+				setInterval(() => {
+					if (this.now) this.now = new Date(this.now.getTime() + 100);
+				}, 100);
+			} else {
+				console.error("Time API Error!");
+			}
+		}
+		httpRequest.send();
+	}
+
+	get showApply() {
+		if (this.now) {
+		return this.now.getTime() >= this.schedule[0].date.getTime() &&
+		       this.now.getTime() <= this.schedule[1].date.getTime();
+		}
+	}
+}
 </script>
 
 <style lang="scss">

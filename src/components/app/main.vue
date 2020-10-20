@@ -3,8 +3,8 @@
 		<span class="slogan">소프트웨어의 미래를 만나보세요</span>
 		<h1 class="title">2020 소프트웨어 나눔축제</h1>
 		<span class="timer">
-			{{ now.name }}
-			<span class="d-day">{{ dDay }}</span>
+			{{ dDay[0] }}
+			<span class="d-day">{{ dDay[1] }}</span>
 		</span>
 		<!-- Info -->
 		<span class="info calendar">
@@ -29,65 +29,39 @@ import AppIcon from "@/components/app/icon.vue";
 	}
 })
 export default class AppMain extends Vue {
-	now: {
-		date: Date | null;
-		name: string;
-	} = {
-		date: null,
-		name: ""
-	};
-	calendar: {
-		date: Date;
-		name: string;
-	}[] = [
-		{
-			date: new Date("2020-10-21T00:00:00"),
-			name: "접수시작"
-		},
-		{
-			date: new Date("2020-10-25T17:00:00"),
-			name: "접수마감"
-		},
-		{
-			date: new Date("2020-10-27T18:00:00"),
-			name: "참가자 발표"
-		},
-		{
-			date: new Date("2020-10-31T18:00:00"),
-			name: "캠프 진행"
-		}
-	];
+	@Prop({
+		required: true
+	}) now!: Date | null;
+	@Prop({
+		type: Array,
+		required: true
+	}) schedule!: { date: Date; name: string }[];
 
-	created() {
-		fetch("http://worldtimeapi.org/api/timezone/Asia/Seoul").then((response) => {
-			if (response.ok) {
-				return response.json();
-			}
-			throw new Error("World time api error!");
-		}).then((json) => {
-			this.now.date = new Date(json.datetime);
-		});
-	}
+	currentSchedule: number = -1;
 
-	get dDay(): string {
-		if (!this.now.date) return "-";
+	get dDay(): string[] {
+		if (!this.now) return ["", "-"];
 
-		let date: number = -1;
-		for (let i = 0; i < this.calendar.length; i++) {
-			if (this.now.date.getTime() < this.calendar[i].date.getTime()) {
-				this.now.name = this.calendar[i].name;
-				date = this.calendar[i].date.getTime() - this.now.date.getTime();
-				date = Math.floor(date / (1000 * 60 * 60 * 24));
+		for (let i = 0; i < this.schedule.length; i++) {
+			if (this.now.getTime() < this.schedule[i].date.getTime()) {
+				this.currentSchedule = i;
 				break;
 			}
 		}
-		if (date > 0) {
-			return `D-${date}`;
-		} else if (date == 0) {
-			return "D-DAY";
-		} else {
-			return ""
-		}
+
+		let sch = this.schedule[this.currentSchedule];
+		let gap = sch.date.getTime() - this.now.getTime();
+		gap = Math.round(gap / (1000 * 60 * 60 * 24));
+		let result = [sch.name, ""];
+		if (
+			this.now.getFullYear() == sch.date.getFullYear() &&
+			this.now.getMonth() == sch.date.getMonth() &&
+			this.now.getDate() == sch.date.getDate()
+		) {
+			result[1] = "D-DAY";
+		} else result[1] = `D-${gap}`;
+
+		return result;
 	}
 }
 </script>

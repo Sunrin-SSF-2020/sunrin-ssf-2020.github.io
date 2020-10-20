@@ -8,13 +8,18 @@
 				>
 			</a>
 			<app-header-nav/>
-			<a href="#" class="apply">신청하기</a>
+			<a
+				v-if="apply"
+				:href="form"
+				target="_blank"
+				class="apply"
+			>신청하기</a>
 		</div>
 	</div>
 </template>
 
 <script lang="ts">
-import { Vue, Component } from "vue-property-decorator";
+import { Vue, Component, Prop } from "vue-property-decorator";
 // Components //
 import AppHeaderNav from "@/components/app/header/nav.vue";
 
@@ -24,6 +29,15 @@ import AppHeaderNav from "@/components/app/header/nav.vue";
 	}
 })
 export default class AppHeader extends Vue {
+	@Prop({
+		type: Boolean,
+		default: false
+	}) apply!: boolean;
+	@Prop({
+		type: String,
+		default: ""
+	}) form!: string;
+
 	scrolled: boolean = false;
 	background: string = "transparent";
 

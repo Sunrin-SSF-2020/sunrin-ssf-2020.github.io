@@ -1,7 +1,9 @@
 <template>
 	<article class="app-calendar" id="calendar">
 		<h2 class="heading">전체 일정</h2>
-		<span class="paragraph">여기는 어떤걸 적을까요..?</span>
+		<span class="paragraph">
+			<!-- 여기는 어떤걸 적을까요..? -->
+		</span>
 		<app-calendar-table/>
 	</article>
 </template>

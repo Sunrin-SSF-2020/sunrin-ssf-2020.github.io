@@ -84,6 +84,12 @@ export default class AppCalendarTable extends Vue {
 @media screen and (max-width: 550px) {
 	.app-calendar-table {
 		width: 100%;
+
+		th, td {
+			height: auto;
+
+			padding: 8px 16px;
+		}
 	}
 }
 </style>
