@@ -238,6 +238,7 @@ export default class AppTeamsTeamBlock extends Vue {
 
 		height: 100%;
 		max-height: 512px + 64px;
+		overflow-y: auto;
 
 		position: relative;
 
@@ -367,6 +368,52 @@ export default class AppTeamsTeamBlock extends Vue {
 
 		.close {
 			display: flex;
+		}
+	}
+}
+
+@media screen and (max-width: 1024px) {
+	.popup {
+		.content {
+			flex-direction: column;
+
+			width: fit-content;
+			max-height: 100%;
+			margin: 0 auto;
+
+			.img {
+				width: 100%;
+				max-width: 300px;
+				height: 300px;
+				margin: 0 auto;
+			}
+			.contents {
+				width: fit-content;
+				margin: 0 auto;
+			}
+		}
+	}
+}
+@media screen and (max-width: 364px) {
+	.popup {
+		.content {
+			gap: 0;
+			padding: 0;
+
+			.img {
+				position: relative;
+
+				width: 100vw;
+				max-width: 100vw;
+				height: 100vw;
+			}
+			.contents {
+				padding: 32px;
+
+				.flex {
+					flex-direction: column;
+				}
+			}
 		}
 	}
 }
