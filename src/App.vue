@@ -1,5 +1,9 @@
 <template>
 	<div id="app">
+		<div v-if="isIe" class="ie">
+			이 페이지는 Internet Explorer를 지원하지 않습니다 :(<br>
+			다른 브라우저로 접속해주세요.
+		</div>
 		<app-header :apply="showApply" :form="applyUrl" />
 		<app-main
 			:now="now"
@@ -78,6 +82,9 @@ export default class App extends Vue {
 		httpRequest.send();
 	}
 
+	get isIe() {
+		return /Trident\/|MSIE/.test(window.navigator.userAgent);
+	}
 	get showApply() {
 		if (this.now) {
 		return this.now.getTime() >= this.schedule[0].date.getTime() &&
@@ -160,5 +167,23 @@ article {
 		font-size: 14px;
 		letter-spacing: 0.2em;
 	}
+}
+
+.ie {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	position: fixed;
+	z-index: 1024;
+	bottom: 0;
+
+	width: 100%;
+	height: 128px;
+
+	background-color: #eeeeee;
+
+	font-size: 1.5em;
+	text-align: center;
 }
 </style>

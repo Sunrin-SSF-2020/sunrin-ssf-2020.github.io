@@ -162,7 +162,9 @@ export default class AppTeams extends Vue {
 	margin-bottom: 32px;
 }
 .team-list {
+	display: -ms-grid;
 	display: grid;
+	-ms-grid-columns: 1fr 1fr 1fr 1fr;
 	grid-template-columns: repeat(4, 1fr);
 	gap: 16px;
 }
@@ -212,11 +214,13 @@ export default class AppTeams extends Vue {
 
 @media screen and (max-width: 1024px) {
 	.team-list {
+		-ms-grid-columns: 1fr 1fr 1fr;
 		grid-template-columns: repeat(3, 1fr);
 	}
 }
 @media screen and (max-width: 720px) {
 	.team-list {
+		-ms-grid-columns: 1fr 1fr;
 		grid-template-columns: repeat(2, 1fr);
 	}
 }
